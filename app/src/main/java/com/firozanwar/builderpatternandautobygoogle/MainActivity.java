@@ -5,6 +5,8 @@ import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.firozanwar.builderpatternandautobygoogle.User.UserWitAutoValue;
+import com.firozanwar.builderpatternandautobygoogle.User.UserWithoutAutoValue;
 import com.firozanwar.builderpatternandautobygoogle.bankaccount.BankAccountWithBuilder;
 import com.firozanwar.builderpatternandautobygoogle.bankaccount.BankAccountWithoutBuilder;
 
@@ -29,5 +31,14 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         Log.d(TAG, "Account Number using with builder: " + accountWithBuilder.getAccountNumber());
+
+        // Auto
+        UserWithoutAutoValue user1 = UserWithoutAutoValue.with("Firoz", "Anwar");
+        UserWithoutAutoValue user2 = UserWithoutAutoValue.with("Firoz", "Anwar");
+        Log.d(TAG, "Without AutoValue user1 equals user2: " + user1.equals(user2)); // false
+
+        UserWitAutoValue user3 = UserWitAutoValue.with("Firoz", "Anwar");
+        UserWitAutoValue user4 = UserWitAutoValue.with("Firoz", "Anwar");
+        Log.d(TAG, "With AutoValue user1 equals user2: " + user3.equals(user4));  // true
     }
 }
